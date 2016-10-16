@@ -124,7 +124,7 @@
   background-image: url("../paper_img/lamp.jpg");
   background-position: center center;
   background-size: cover;
-  height: 200px;
+  height: 150px;
   position: relative;
 }
 
@@ -132,7 +132,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   content: "";
   display: block;
-  height: 200px;
+  height: 150px;
   left: 0;
   position: absolute;
   top: 0;

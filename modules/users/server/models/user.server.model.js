@@ -97,6 +97,10 @@ var UserSchema = new Schema({
   },
   resetPasswordExpires: {
     type: Date
+  },
+  designation: {
+    type: String,
+    default: 'Double Click to Edit'
   }
 });
 
