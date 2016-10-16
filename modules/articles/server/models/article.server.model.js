@@ -14,16 +14,24 @@ var ArticleSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  title: {
+  jobtitle: {
     type: String,
     default: '',
     trim: true,
-    required: 'Title cannot be blank'
+    required: 'Job Title cannot be blank'
   },
-  content: {
+  company: {
     type: String,
     default: '',
-    trim: true
+    trim: true,
+    required: 'Company name cannot be blank'
+  },
+  deadline: {
+    type: Date
+  },
+  notes: {
+    type: String,
+    default: ''
   },
   user: {
     type: Schema.ObjectId,

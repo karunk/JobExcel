@@ -1,9 +1,13 @@
 'use strict';
 
 // Articles controller
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-  function ($scope, $stateParams, $location, Authentication, Articles) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles', '$timeout',
+  function ($scope, $stateParams, $location, Authentication, Articles, $timeout) {
     $scope.authentication = Authentication;
+    
+  $scope.formData = {};
+  $scope.data = {};
+
 
     // Create new Article
     $scope.create = function (isValid) {
@@ -17,8 +21,11 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 
       // Create new Article object
       var article = new Articles({
-        title: this.title,
-        content: this.content
+        jobtitle: this.jobtitle,
+        company: this.company,
+        deadline: this.deadline,
+        notes: this.notes
+
       });
 
       // Redirect after save

@@ -1850,6 +1850,8 @@ textarea.form-control {
   transition: opacity 0.5s ease 0s;
 }
 
+
+/* DATEPICKER FAULT BELOW */
 .img-details {
   min-height: 50px;
   padding: 0 4px 0.5em;
@@ -1882,13 +1884,16 @@ textarea.form-control {
   background-color: #FFFCF5;
   border: 0 none;
   border-radius: 8px;
-  display: block;
+  /*display: block;*/
   margin-top: 10px;
   padding: 0px;
+  /*
   position: absolute;
   visibility: hidden;
   z-index: 9000;
-  opacity: 0;
+  opacity: 0;*/ /*REMOVED TO MAKE UI DATEPICKER WORK */
+
+
   filter: alpha(opacity=0);
   -webkit-box-shadow: 0 2px rgba(17, 16, 15, 0.1), 0 2px 10px rgba(17, 16, 15, 0.1);
   box-shadow: 0 2px rgba(17, 16, 15, 0.1), 0 2px 10px rgba(17, 16, 15, 0.1);
@@ -3115,211 +3120,4 @@ textarea.form-control {
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
   }
-}
-/*!
- * Datepicker for Bootstrap
- *
- * Copyright 2012 Stefan Petre
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- */
-/*  
- *
- *   SCSS by Creative Tim
- *   http://www.creative-tim.com
- *   
- */
-.datepicker {
-  top: 0;
-  left: 0;
-  padding: 4px;
-  margin-top: 1px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-.datepicker > div {
-  display: none;
-}
-.datepicker table {
-  width: 100%;
-  margin: 0;
-}
-.datepicker td,
-.datepicker th {
-  text-align: center;
-  width: 20px;
-  height: 20px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-.datepicker td {
-  border-top: 1px solid #DDDDDD;
-  text-align: center;
-}
-.datepicker td p {
-  font-size: 14px;
-  font-weight: 400;
-  border-radius: 50%;
-  height: 29px;
-  line-height: 29px;
-  margin: 3px 0 8px;
-  width: 29px;
-}
-.datepicker td :hover {
-  cursor: pointer;
-}
-.datepicker th {
-  font-weight: 300;
-}
-.datepicker th.switch-datepicker {
-  font-size: 16px;
-}
-.datepicker .prev p,
-.datepicker .next p {
-  font-size: 1.825em;
-}
-.datepicker p:hover {
-  background: #eeeeee;
-}
-.datepicker .day.disabled {
-  color: #eeeeee;
-}
-.datepicker td.old,
-.datepicker td.new {
-  color: #999999;
-  border-top: 0;
-}
-.datepicker td.active p,
-.datepicker td.active:hover p {
-  color: #ffffff;
-  background-color: #68B3C8;
-}
-.datepicker td.blue p,
-.datepicker td.blue:hover p {
-  background-color: #7A9E9F;
-}
-.datepicker td.azure p,
-.datepicker td.azure:hover p {
-  background-color: #68B3C8;
-}
-.datepicker td.green p,
-.datepicker td.green:hover p {
-  background-color: #7AC29A;
-}
-.datepicker td.orange p,
-.datepicker td.orange:hover p {
-  background-color: #F3BB45;
-}
-.datepicker td.red p,
-.datepicker td.red:hover p {
-  background-color: #EB5E28;
-}
-.datepicker span {
-  display: block;
-  width: 55px;
-  height: 54px;
-  line-height: 54px;
-  float: left;
-  margin: 2px;
-  cursor: pointer;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-.datepicker span.old {
-  color: #999999;
-}
-.datepicker span.active,
-.datepicker span:focus,
-.datepicker span:hover,
-.datepicker span:active {
-  background-color: #68B3C8;
-}
-.datepicker span.active {
-  color: #FFFFFF;
-}
-.datepicker span:hover {
-  background: #eeeeee;
-}
-.datepicker span.blue,
-.datepicker span.blue:hover {
-  background-color: #7A9E9F;
-}
-.datepicker span.azure,
-.datepicker span.azure:hover {
-  background-color: #68B3C8;
-}
-.datepicker span.green,
-.datepicker span.green:hover {
-  background-color: #7AC29A;
-}
-.datepicker span.orange,
-.datepicker span.orange:hover {
-  background-color: #F3BB45;
-}
-.datepicker span.red,
-.datepicker span.red:hover {
-  background-color: #EB5E28;
-}
-.datepicker th.switch-datepicker {
-  width: 145px;
-}
-.datepicker th.next,
-.datepicker th.prev {
-  font-size: 21px;
-}
-.datepicker thead tr:first-child th {
-  cursor: pointer;
-}
-.datepicker thead tr:first-child th:hover {
-  background: #eeeeee;
-}
-.datepicker.dropdown-menu {
-  border-radius: 0 0 10px 10px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-transform-origin: none;
-  -moz-transform-origin: none;
-  -o-transform-origin: none;
-  -ms-transform-origin: none;
-  transform-origin: none;
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -o-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: all 150ms linear;
-  -moz-transition: all 150ms linear;
-  -o-transition: all 150ms linear;
-  -ms-transition: all 150ms linear;
-  transition: all 150ms linear;
-  margin-top: -20px;
-}
-.datepicker.dropdown-menu.open {
-  opacity: 1;
-  filter: alpha(opacity=100);
-  visibility: visible;
-  margin-top: -1px;
-}
-.datepicker .table-condensed > tbody > tr > td {
-  padding: 2px;
-}
-.datepicker .table-condensed > thead > tr > th {
-  padding: 0;
-}
-
-.input-append.date .add-on i,
-.input-prepend.date .add-on i {
-  display: block;
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
-}
-
-.datepicker-months thead {
-  padding: 0 0 3px;
-  display: block;
 }
