@@ -1,0 +1,131 @@
+<div ng-controller="HomeController">
+	<div class="container" id="home-page-container" ng-if="!authentication.user">
+	  <div class="jumbotron">
+	    <h1>JobExcel</h1> 
+	    <p>JobExcel acts as an excel sheet for the jobs you aspire. <br> Jot down your dream jobs, the skills you need to bag those jobs in JobExcel.</p> 
+	  </div>
+	  <div id="madewithlove">
+	  	<p>Made with <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> by <a href="https://github.com/karunk">karunk</a> </p> 
+	  </div>
+	   
+	</div>
+	<div ng-if="authentication.user">
+
+        <div class="profile-background"> 
+            <div class="filter-black"></div>  
+        </div>
+        <div class="profile-content section-nude">
+            <div class="container">
+                <div class="row owner">
+                    <div class="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 text-center">
+                        <div class="avatar">
+                            <img ng-src="{{authentication.user.profileImageURL}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                        </div>
+                        <div class="name">
+                            <h4>Chet Faker<br /><small>Music Producer</small></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                        <br />
+                        <btn class="btn"><i class="fa fa-cog"></i> Settings</btn>
+                    </div>
+                </div>
+                <div class="profile-tabs">
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                                <li class="active"><a href="#follows" data-toggle="tab">Follows</a></li>
+                                <li><a href="#following" data-toggle="tab">Following</a></li>
+<!--                                 <li><a href="#following" data-toggle="tab">Following</a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="my-tab-content" class="tab-content">
+                        <div class="tab-pane active" id="follows">
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <ul class="list-unstyled follows">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-md-2 col-md-offset-0 col-xs-3 col-xs-offset-2">
+                                                    <img src="../assets/paper_img/flume.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                </div>
+                                                <div class="col-md-7 col-xs-4">
+                                                    <h6>Flume<br /><small>Musical Producer</small></h6>
+                                                </div>
+                                                <div class="col-md-3 col-xs-2">
+                                                    <div class="unfollow" rel="tooltip" title="Unfollow">
+                                                        <label class="checkbox" for="checkbox1" >
+                                                            <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox" checked>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-md-2 col-md-offset-0 col-xs-3 col-xs-offset-2">
+                                                    <img src="../assets/paper_img/banks.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                </div>
+                                                <div class="col-md-7 col-xs-4">
+                                                    <h6>Banks<br /><small>Singer</small></h6>
+                                                </div>
+                                                <div class="col-md-3 col-xs-2">
+                                                    <div class="unfollow" rel="tooltip" title="Unfollow">
+                                                        <label class="checkbox" for="checkbox1" >
+                                                            <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox" checked>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane text-center" id="following">
+                            <h3 class="text-muted">Not following anyone yet :(</h3>
+                            <btn class="btn btn-warning btn-fill">Find artists</btn>
+                        </div>
+                    </div>
+                    
+                </div>        
+            </div>
+        </div>
+	    
+
+
+
+
+
+	    <footer class="footer-demo section-nude">
+	        <div class="container">
+	            <nav class="pull-left">
+	                <ul>
+	    
+	                    <li>
+	                        <a href="http://www.creative-tim.com">
+	                            JobExcel
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a href="http://www.creative-tim.com/product/rubik">
+	                            Creative Tim
+	                        </a>
+	                    </li>
+	                </ul>
+	            </nav>
+	            <div class="copyright pull-right">
+	                &copy; 2016, made with <i class="fa fa-heart heart"></i> by <a href="https://github.com/karunk">karunk</a>
+	            </div>
+	        </div>
+	    </footer>
+
+	    
+	</div>
+
+</div>
