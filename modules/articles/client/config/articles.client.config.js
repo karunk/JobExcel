@@ -5,7 +5,7 @@ angular.module('articles').run(['Menus',
   function (Menus) {
     // Add the articles dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Articles',
+      title: 'Job Listings',
       state: 'articles',
       type: 'dropdown',
       roles: ['*']
@@ -13,13 +13,13 @@ angular.module('articles').run(['Menus',
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'articles', {
-      title: 'List Articles',
+      title: 'List Jobs',
       state: 'articles.list'
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'articles', {
-      title: 'Create Articles',
+      title: 'Add a new job',
       state: 'articles.create',
       roles: ['user']
     });

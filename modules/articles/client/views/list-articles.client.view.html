@@ -1,20 +1,44 @@
-<section ng-controller="ArticlesController" ng-init="find()">
-  <div class="page-header">
-    <h1>Articles</h1>
-  </div>
-  <div class="list-group">
-    <a ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})" class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="article.created | date:'mediumDate'"></span>
-        by
-        <span ng-bind="article.user.displayName"></span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="article.title"></h4>
-      <p class="list-group-item-text" ng-bind="article.content"></p>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
-    No articles yet, why don't you <a ui-sref="articles.create">create one</a>?
-  </div>
-</section>
+<div class="section section-light-brown landing-section" ng-controller="ArticlesController" ng-init="find_and_pagination()" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-top: 20px;">
+    <div class="row">
+      <div class="col-md-9" style="display: flex; flex-direction: row; justify-content: flex-start;">
+            <h3 style="margin-top: 0px; padding-left: 10%;">You have {{articles.length}} jobs listed.</h3>
+      </div>
+      <div class="col-md-2">
+        <input class="form-control col-md-4" type="text" ng-model="search" placeholder="Search Jobs" ng-change="figureOutItemsToDisplay()" />
+      </div>
+    </div>
+    <div class="row" style="padding-bottom: 15%;">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4" ng-repeat="article in pagedItems" style="display: flex; justify-content: center;"> 
+                <div style="display: flex; justify-content: space-between;">
+                  <div class="team-player">
+                      <img src="https://logo.clearbit.com/{{article.company | lowercase}}.com" alt="Thumbnail Image" class="img-circle img-responsive">
+                      <h5>{{article.company}} <br /><small style="color: white;">{{article.jobtitle}}</small></h5>
+                    <div style="text-align: left;">
+                      <a class="btn btn-danger btn-simple" ui-sref="articles.view({articleId: article._id})">See more <i class="fa fa-chevron-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+    <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
+      No articles yet, why don't you <a ui-sref="articles.create">create one</a>?
+    </div>
+
+    <div class="row" style="display: flex; justify-content: center;">
+      <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+    </div>
+
+    <footer class="footer-demo">
+        <div class="container">
+            <div class="copyright pull-right">
+                &copy; 2016, made with <i class="fa fa-heart heart"></i> by <a href="https://github.com/karunk">karunk</a>
+            </div>
+        </div>
+    </footer>
+</div>

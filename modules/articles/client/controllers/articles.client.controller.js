@@ -1,8 +1,8 @@
 'use strict';
 
 // Articles controller
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles', '$timeout',
-  function ($scope, $stateParams, $location, Authentication, Articles, $timeout) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles', '$timeout', '$filter',
+  function ($scope, $stateParams, $location, Authentication, Articles, $timeout, $filter) {
     $scope.authentication = Authentication;
     
     $scope.formData = {};
@@ -17,7 +17,26 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
       if (n%10 === 0) return deca[Math.floor(n/10)-2] + 'ieth';
       return deca[Math.floor(n/10)-2] + 'y-' + special[n%10];
     }
-
+    //Auxilart Function -- Build Pagination and other functions
+    $scope.buildPager = function () {
+      $scope.pagedItems = [];
+      $scope.itemsPerPage = 15;
+      $scope.currentPage = 1;
+      $scope.figureOutItemsToDisplay();
+    };
+    $scope.figureOutItemsToDisplay = function () {
+      $scope.filteredItems = $filter('filter')($scope.articles, {
+        $: $scope.search
+      });
+      $scope.filterLength = $scope.filteredItems.length;
+      var begin = (($scope.currentPage - 1) * $scope.itemsPerPage);
+      var end = begin + $scope.itemsPerPage;
+      $scope.pagedItems = $scope.filteredItems.slice(begin, end);
+      console.log($scope.pagedItems);
+    };
+    $scope.pageChanged = function () {
+      $scope.figureOutItemsToDisplay();
+    };
 
 
 
@@ -96,6 +115,13 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
           $scope.GreetingNumber = stringifyNumber(result.length+1);
       });
     };
+    // Find a list of Articles and build pagination
+    $scope.find_and_pagination = function () {
+      $scope.articles = Articles.query();
+      $scope.articles.$promise.then(function (result) {
+          $scope.buildPager();
+      });
+    };  
 
     // Find existing Article
     $scope.findOne = function () {
