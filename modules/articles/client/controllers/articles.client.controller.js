@@ -5,8 +5,20 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
   function ($scope, $stateParams, $location, Authentication, Articles, $timeout) {
     $scope.authentication = Authentication;
     
-  $scope.formData = {};
-  $scope.data = {};
+    $scope.formData = {};
+    $scope.data = {};
+    $scope.GreetingNumber = '';
+
+    //Auxilary Function -- convert number to first,second etc..
+    var special = ['zeroth','first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelvth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth'];
+    var deca = ['twent', 'thirt', 'fourt', 'fift', 'sixt', 'sevent', 'eight', 'ninet'];
+    function stringifyNumber(n) {
+      if (n < 20) return special[n];
+      if (n%10 === 0) return deca[Math.floor(n/10)-2] + 'ieth';
+      return deca[Math.floor(n/10)-2] + 'y-' + special[n%10];
+    }
+
+
 
 
     // Create new Article
@@ -79,6 +91,10 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
     // Find a list of Articles
     $scope.find = function () {
       $scope.articles = Articles.query();
+      $scope.articles.$promise.then(function (result) {
+          console.log(result.length);
+          $scope.GreetingNumber = stringifyNumber(result.length+1);
+      });
     };
 
     // Find existing Article

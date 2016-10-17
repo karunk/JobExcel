@@ -1,10 +1,12 @@
-<div ng-controller="ArticlesController">
+<div ng-controller="ArticlesController" ng-init="find()">
+
     <div class="alert alert-success">
         <div class="container" style="text-align: center;">
-        This is your first JobExcel listing!
+        This is your {{GreetingNumber}} JobExcel listing!
         </div>
     </div>
-    <div class="container">
+
+    <div class="container" >
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h2 class="text-center">Best of luck for this job! <br> Hope you apply soon.</h2>
