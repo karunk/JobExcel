@@ -36,7 +36,7 @@
                       <div class="col-md-6">
                         <div class="form-group" show-errors>
                           <label for="title">Deadline</label>
-                          <input ng-model="formData.dueDate" type="text" id="dueDate" name="dueDate"
+                          <input ng-model="deadline" type="text" id="deadline" name="deadline"
                             class="form-control" datepicker-popup="MM-dd-yyyy" datepicker-append-to-body="true"
                             is-open="data.isOpen" ng-click="data.isOpen = true">
                         </div>
@@ -46,7 +46,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="content">Note</label>
-                          <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+                          <textarea name="notes" ng-model="notes" id="notes" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
                         </div>
                       </div>
                     </div>

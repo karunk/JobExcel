@@ -1,4 +1,4 @@
-<div class="section section-light-brown landing-section" ng-controller="ArticlesController" ng-init="find_and_pagination()" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-top: 20px;">
+<div class="section section-light-brown landing-section" ng-controller="ArticlesController" ng-init="find_and_pagination()" style="min-height: 100vh; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-top: 20px;">
     <div class="row">
       <div class="col-md-9" style="display: flex; flex-direction: row; justify-content: flex-start;">
             <h3 style="margin-top: 0px; padding-left: 10%;">You have {{articles.length}} jobs listed.</h3>
@@ -14,7 +14,7 @@
                 <div style="display: flex; justify-content: space-between;">
                   <div class="team-player">
                       <img src="https://logo.clearbit.com/{{article.company | lowercase}}.com" alt="Thumbnail Image" class="img-circle img-responsive">
-                      <h5>{{article.company}} <br /><small style="color: white;">{{article.jobtitle}}</small></h5>
+                      <h5 style="text-align: center;">{{article.company}} <br /><small style="color: white;">{{article.jobtitle}}</small></h5>
                     <div style="text-align: left;">
                       <a class="btn btn-danger btn-simple" ui-sref="articles.view({articleId: article._id})">See more <i class="fa fa-chevron-right"></i></a>
                     </div>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
-      No articles yet, why don't you <a ui-sref="articles.create">create one</a>?
+      No listings yet, why don't you <a ui-sref="articles.create">create one</a>?
     </div>
 
     <div class="row" style="display: flex; justify-content: center;">

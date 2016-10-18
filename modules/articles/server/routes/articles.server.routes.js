@@ -7,6 +7,10 @@ var articlesPolicy = require('../policies/articles.server.policy'),
   articles = require('../controllers/articles.server.controller');
 
 module.exports = function (app) {
+
+  app.route('/api/glassdoor').all(articlesPolicy.isAllowed)
+    .post(articles.glassdoor);
+
   // Articles collection routes
   app.route('/api/articles').all(articlesPolicy.isAllowed)
     .get(articles.list)

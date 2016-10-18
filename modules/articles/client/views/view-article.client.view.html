@@ -1,22 +1,128 @@
-<section ng-controller="ArticlesController" ng-init="findOne()">
-  <div class="page-header">
-    <h1 ng-bind="article.title"></h1>
+<div ng-controller="ArticlesController" ng-init="findOne()">
+  <div class="section section-dark-blue">
+      <div class="container">
+          <div class="row" id="modals">
+              <div class="col-md-6">
+               <h3>{{article.jobtitle}} <br /><small style="margin-top: 0px;" class="text-muted">{{article.company}}</small></h3> 
+                <img src="https://logo.clearbit.com/{{article.company | lowercase}}.com" alt="Thumbnail Image" class="img-thumbnail img-responsive">
+              </div>
+
+              <div class="col-md-6">
+                <div class="tim-title">
+                    <h3>Important Details</h3>
+                    <p>{{article.notes}}</p>
+                </div>
+              </div>
+
+              <div class="clearfix"></div><br><br>
+
+          <div class="col-md-6">            
+            <!-- Button trigger modal, modals must be placed outside the global wrapper -->
+            <button class="btn btn-neutral" data-toggle="modal" data-target="#myModal">
+              Referrals
+            </button>
+          </div>
+
+          </div><!--  end row -->
+          
+          <div class="tim-title">
+            <h6 class="text-warning">{{Datemsdiff}}.</h6>
+          </div>
+      </div>
   </div>
-  <div class="pull-right" ng-show="authentication.user._id == article.user._id">
-    <a class="btn btn-primary" ui-sref="articles.edit({articleId: article._id})">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="remove();">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
+  <div class="section section-light-brown landing-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4 column">
+                <div class="team-player">
+                    <img src="{{Glassdoor.ceo_image}}" alt="Thumbnail Image" class="img-circle img-responsive">
+                    <h5 style="text-align: center;">{{glassdoor.data.response.employers[0].ceo.name}} <br /><small class="text-muted">CEO</small></h5>
+                    <p style="text-align: center;">{{Glassdoor.ceo_approve}}% of the employees at {{article.company}} approve of this CEO.</p>
+                </div>
+              </div>
+              <div class="col-md-4 column">
+                  <h4>Ratings</h4>
+                  <p>
+                    Work Culture {{Glassdoor.culture_and_values_rating}} <br>
+                    Compensation {{Glassdoor.compensation_and_benifits_rating}} <br>
+                    Overall Rating {{Glassdoor.overall_rating}} <br>
+                    According to glassdoor, employees are {{Glassdoor.rating_description}} and {{Glassdoor.reccomend_friend}}% would recommend this company to a friend.
+                    <span ng-class="{{Glassdoor.class}}">Default</span> 
+                  </p>
+              </div>
+              <div class="col-md-4 column">
+                  <h4>What the employees say..</h4>
+                  <blockquote>{{Glassdoor.pro}}</blockquote>
+                  <a class="btn btn-danger btn-simple" href="{{Glassdoor.pro_link}}">Read the full review <i class="fa fa-chevron-right"></i></a>
+              </div>
+          </div>
+      </div>
   </div>
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span ng-bind="article.created | date:'mediumDate'"></span>
-      by
-      <span ng-bind="article.user.displayName"></span>
-    </em>
-  </small>
-  <p class="lead" ng-bind="article.content"></p>
-</section>
+  <div class="section section-nude section-with-space">
+      <div class="container tim-container">
+          <div class="row">
+              <div class="col-md-8 col-md-offset-2 text-center">
+                  <h2>Ready to make the big step?</h2>
+                  <p>Job openings you spotted in the past dont last forever! Its better you apply soon. After applying, click the below button to let JobExcel know you have taken the big step. <br> Best of Luck! </p>
+              </div>
+              <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 download-area">
+                  <a href="http://www.creative-tim.com/product/paper-kit" class="btn btn-danger btn-fill btn-block btn-lg">I have applied here!</a>
+              </div>
+          </div>
+          <div class="row sharing-area text-center" ng-show="authentication.user._id == article.user._id">
+                  <h3>Something wrong?</h3>
+                  <a ng-click="remove();" class="btn">
+                      <i class="fa fa-trash-o"></i>
+                      Delete this entry
+                  </a>
+                  <a ui-sref="articles.edit({articleId: article._id})" class="btn">
+                      <i class="fa fa-pencil"></i>
+                      Edit this entry
+                  </a>
+          </div>
+      </div>
+  </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. </p>
+      </div>
+      <div class="modal-footer">
+        <div class="left-side">
+            <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Never mind</button>
+        </div>
+        <div class="divider"></div>
+        <div class="right-side">
+            <button type="button" class="btn btn-danger btn-simple">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <footer class="footer-demo section-dark">
+    <div class="container">
+        <nav class="pull-left">
+            <ul>
+
+                <li>
+                    <a href="#">
+                        JobExcel
+                    </a>
+                </li>
+                <li>
+                    <a href='https://www.glassdoor.co.in/index.htm'>powered by <img src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search' /></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright pull-right">
+            &copy; 2016, made with <i class="fa fa-heart heart"></i> by <a href="https://github.com/karunk">karunk</a>
+        </div>
+    </div>
+</footer>
+</div>

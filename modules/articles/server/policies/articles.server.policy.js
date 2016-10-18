@@ -29,6 +29,9 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/articles/:articleId',
       permissions: ['get']
+    }, {
+      resources: '/api/glassdoor',
+      permissions: ['get', 'post']
     }]
   }, {
     roles: ['guest'],
@@ -38,6 +41,9 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/articles/:articleId',
       permissions: ['get']
+    }, {
+      resources: '/api/glassdoor',
+      permissions: ['get', 'post']
     }]
   }]);
 };

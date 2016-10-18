@@ -6,7 +6,47 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Article = mongoose.model('Article'),
-  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+  http = require('http');
+
+/**
+* Glassdoor API handling
+*/
+exports.glassdoor = function(req, res) {
+
+
+  var companyname = 'samsung';
+  var location = 'india';
+
+  var url = 'http://api.glassdoor.com/api/api.htm?t.p=100948&t.k=j3KFMERLtnS&userip=0.0.0.0&useragent=&format=json&v=1&action=employers';
+  url+='&';
+  url+='q=';
+  url+=req.body.companyname;
+  //url+='l=';
+  //url+=location;
+
+  http.get(url, function(response){
+      var body = '';
+      response.on('data', function(chunk){
+          body += chunk;
+      });
+      response.on('end', function(){
+          var jsonres = JSON.parse(body);
+          //console.log("Got a response: ", fbResponse.picture);
+          res.json({
+            success: 'true',
+            data: jsonres
+          });
+      });
+  }).on('error', function(e){
+          res.json({
+            success: 'false',
+            data: e
+          });
+  });
+
+
+}
 
 /**
  * Create a article
@@ -38,10 +78,12 @@ exports.read = function (req, res) {
  */
 exports.update = function (req, res) {
   var article = req.article;
-
-  article.title = req.body.title;
-  article.content = req.body.content;
-
+  console.log(req.article);
+  article.jobtitle = req.body.jobtitle;
+  article.company = req.body.company;
+  article.deadline = req.body.deadline;
+  article.notes = req.body.notes;
+  
   article.save(function (err) {
     if (err) {
       return res.status(400).send({
