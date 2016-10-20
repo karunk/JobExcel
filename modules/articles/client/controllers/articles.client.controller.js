@@ -97,8 +97,18 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
       catch(err){
         $scope.Glassdoor.ceo_image = default_image;
       }
-      $scope.Glassdoor.ceo_name = glassdoor.data.response.employers[0].ceo.name;
-      $scope.Glassdoor.ceo_approve = glassdoor.data.response.employers[0].ceo.pctApprove;
+      try{
+        $scope.Glassdoor.ceo_name = glassdoor.data.response.employers[0].ceo.name;
+      }
+      catch(err){
+        $scope.Glassdoor.ceo_name = undefined;
+      }
+      try{
+        $scope.Glassdoor.ceo_approve = glassdoor.data.response.employers[0].ceo.pctApprove;
+      }
+      catch(err){
+        $scope.Glassdoor.ceo_approve = undefined;
+      }
 
       //RATINGS
       $scope.Glassdoor.compensation_and_benifits_rating = glassdoor.data.response.employers[0].compensationAndBenefitsRating;
@@ -120,6 +130,86 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 
 
     //---------end of aux functions-------------
+
+    //Skills crud ----------------------------------
+    // Create new Skill
+    $scope.create_skill = function (isValid) {
+      $scope.error = null;
+      console.log('here');
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'skillForm');
+        return false;
+      }
+      console.log('valid',this);
+      var url = '/api/skills/';
+      $http.post(url, {
+        title: this.skilltitle
+      }).success(function(data){
+          console.log(data);
+          $scope.find_skills();
+        });
+    };
+
+    // Find all Skills
+    $scope.find_skills = function () {
+      $scope.skills = [];
+      var url = '/api/skills/';
+      $http.get(url).success(function(data){
+          console.log(data);
+          $scope.skills = data;
+        });
+    };
+
+    //Add skill to user
+    $scope.add_skill = function(SkillId){
+
+      var url = '/api/users/'+$scope.authentication.user._id;
+      $http.post(url, {
+        skillId: SkillId
+      }).success(function(data){
+        console.log(data, $scope.authentication);
+        $scope.authentication.user = data;
+        console.log($scope.authentication);
+      });
+    };
+
+    //Add skill to job
+    $scope.add_skill_to_job = function(SkillId){
+
+      var url = '/api/articles/'+$scope.article._id;
+      $http.post(url, {
+        skillId: SkillId
+      }).success(function(data){
+        $scope.article = data;
+        console.log($scope.article);
+      });
+    };
+
+    $scope.skill_present = function(id, arr){
+      var found = false;
+      for(var i = 0; i < arr.length; i++) {
+          if (arr[i] == id) {
+              found = true;
+              break;
+          }
+      }
+      return found;
+    };
+
+    $scope.skill_present_in_job = function(id, arr){
+      var found = false;
+      for(var i = 0; i < arr.length; i++) {
+          if (arr[i]._id == id) {
+              found = true;
+              break;
+          }
+      }
+      return found;
+    };
+
+
+
+    //-----------------------------------------
 
     // Create new Article
     $scope.create = function (isValid) {
@@ -187,6 +277,16 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
         $scope.error = errorResponse.data.message;
       });
     };
+    
+    //Apply to a job
+    $scope.apply = function(){
+      var url = '/api/articles/apply/'+ $scope.article._id;
+      $http.put(url)
+          .success(function(data){
+            console.log(data);
+            $scope.article = data;
+          });
+    };
 
     // Find a list of Articles
     $scope.find = function () {
@@ -196,6 +296,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
           $scope.GreetingNumber = stringifyNumber(result.length+1);
       });
     };
+
     // Find a list of Articles and build pagination
     $scope.find_and_pagination = function () {
       $scope.articles = Articles.query();
@@ -221,6 +322,13 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
           $scope.glassdoor = data;
           $scope.GlassdoorClean(data);
         });
+        $scope.skills = [];
+        var url = '/api/skills/';
+        console.log(url);
+        $http.get(url).success(function(data){
+            $scope.skills = data;
+            console.log($scope.skills);
+          });
 
       });
     };

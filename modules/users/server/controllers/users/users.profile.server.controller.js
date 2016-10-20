@@ -12,6 +12,8 @@ var _ = require('lodash'),
   config = require(path.resolve('./config/config')),
   User = mongoose.model('User');
 
+
+
 /**
  * Update user details
  */

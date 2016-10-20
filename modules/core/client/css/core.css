@@ -1,3 +1,10 @@
+.test{
+  background-color: #7f7f7f;
+}
+.skillselect:hover{
+background-color: #000000; 
+}
+
 blockquote {
   border-left: 10px solid white;
   margin: 1.5em 10px;

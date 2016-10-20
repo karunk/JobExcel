@@ -7,8 +7,174 @@ var path = require('path'),
   mongoose = require('mongoose'),
   Article = mongoose.model('Article'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  http = require('http');
+  http = require('http'),
+  Skill = mongoose.model('Skill');
 
+//SKILL HANDLING
+/**
+* Add skill to job
+*/
+exports.add_skill = function (req, res) {
+  var article = req.article;
+  console.log(article);
+
+  //if already exists remove otherwise add
+
+  var found = false;
+  var index = -1;
+  for(var i = 0; i < article.skills.length; i++) {
+      if (article.skills[i]._id == req.body.skillId) {
+          found = true;
+          index = i;
+          break;
+      }
+  }
+    
+  if (found == true) {
+      article.skills.splice(index, 1);
+  }
+  else{
+    article.skills.push(req.body.skillId);
+  }
+  article.save(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+
+    res.json(article);
+  });
+};
+
+/**
+ * Create a skill
+ */
+exports.create_skill = function (req, res) {
+  var skill = new Skill(req.body);
+
+  skill.save(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(skill);
+    }
+  });
+};
+/**
+ * List of skills
+ */
+exports.list_skills = function (req, res) {
+  Skill.find().exec(function (err, skills) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(skills);
+    }
+  });
+};
+/**
+ * Update a skill
+ */
+exports.update_skill = function (req, res) {
+
+  if (!mongoose.Types.ObjectId.isValid(req.body.skillId)) {
+    return res.status(400).send({
+      message: 'Skill id is invalid'
+    });
+  }
+
+  Skill.findById(req.body.skillId).exec(function (err, skill) {
+    if (err) {
+      return next(err);
+    } else if (!skill) {
+      return res.status(404).send({
+        message: 'No skill with that identifier has been found'
+      });
+    }
+    var upd_skill = skill;
+    upd_skill.title = req.body.title;
+    upd_skill.have = req.body.have;
+    upd_skill.save(function (err) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.json(upd_skill);
+      }
+    });
+  });
+};
+/**
+ * Delete an skill
+ */
+exports.delete_skill = function (req, res) {
+
+  if (!mongoose.Types.ObjectId.isValid(req.body.skillId)) {
+    return res.status(400).send({
+      message: 'Skill id is invalid'
+    });
+  }
+
+  Skill.findById(req.body.skillId).exec(function (err, skill) {
+    if (err) {
+      return next(err);
+    } else if (!skill) {
+      return res.status(404).send({
+        message: 'No skill with that identifier has been found'
+      });
+    }
+    var rem_skill = skill;
+    rem_skill.remove(function (err) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.json(rem_skill);
+      }
+    });
+    
+  });
+};
+/**
+* Get skill logo from wikimedia
+*/ 
+exports.skill_logo = function (req, res) {
+  var skill = req.body.title;
+  var url = "http://en.wikipedia.org/w/api.php?action=query&titles="+skill+"&prop=pageimages&format=json&pithumbsize=100"
+  console.log(url);
+  /*http.get(url, function(response){
+      var body = '';
+      response.on('data', function(chunk){
+          body += chunk;
+      });
+      response.on('end', function(){
+          var jsonres = JSON.parse(body);
+          //console.log("Got a response: ", fbResponse.picture);
+          res.json({
+            success: 'true',
+            data: jsonres
+          });
+      });
+  }).on('error', function(e){
+          res.json({
+            success: 'false',
+            data: e
+          });
+  });*/
+};
+
+
+
+
+
+/////////
 /**
 * Glassdoor API handling
 */
@@ -96,6 +262,25 @@ exports.update = function (req, res) {
 };
 
 /**
+* Apply for company
+*/
+exports.apply = function(req, res) {
+  var article = req.article;
+  article.applied = true;
+  article.save(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(article);
+    }
+  });
+};
+
+
+
+/**
  * Delete an article
  */
 exports.delete = function (req, res) {
@@ -116,7 +301,7 @@ exports.delete = function (req, res) {
  * List of Articles
  */
 exports.list = function (req, res) {
-  Article.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
+  Article.find().sort('-created').populate('skills', 'title').populate('user', 'displayName').exec(function (err, articles) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -138,7 +323,7 @@ exports.articleByID = function (req, res, next, id) {
     });
   }
 
-  Article.findById(id).populate('user', 'displayName').exec(function (err, article) {
+  Article.findById(id).populate('user', 'displayName').populate('skills', 'title').exec(function (err, article) {
     if (err) {
       return next(err);
     } else if (!article) {

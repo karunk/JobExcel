@@ -101,7 +101,11 @@ var UserSchema = new Schema({
   designation: {
     type: String,
     default: 'Double Click to Edit'
-  }
+  },
+  skills: [{
+    type: Schema.ObjectId,
+    ref: 'Skill'
+  }]
 });
 
 /**
