@@ -32,10 +32,13 @@
             </button>
            
           </div>
-          <div class="col-md-6" style="display: flex; justify-content: space-around;">            
+          <div class="col-md-6">            
             <!--List of skills -->
-            <div ng-repeat="skill in article.skills">
-              <h6>{{skill.title}}</h6>
+            <h5> Skills Required : -</h5>
+            <div style="display: flex; justify-content: flex-start;">
+              <div ng-repeat="skill in article.skills">
+                <h6 style="padding-right: 10px;">{{skill.title}}</h6>
+              </div>
             </div>
           </div>
 
