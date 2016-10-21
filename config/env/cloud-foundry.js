@@ -19,10 +19,10 @@ var getCred = function (serviceName, credProp) {
 module.exports = {
   port: appEnv.port,
   db: {
-    uri: cfMongoUrl,
+    uri: "mongodb://karun_jobexcel:mLabkarun_1994@ds023624.mlab.com:23624/jobexcel",
     options: {
-      user: '',
-      pass: ''
+      user: 'karun_jobexcel',
+      pass: 'mLabkarun_1994'
     }
   },
   log: {
