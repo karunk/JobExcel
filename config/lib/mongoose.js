@@ -26,6 +26,7 @@ module.exports.connect = function (cb) {
     // Log Error
     if (err) {
       console.error(chalk.red('Could not connect to MongoDB!'));
+      console.log(config.db.uri);
       console.log(err);
     } else {
 
