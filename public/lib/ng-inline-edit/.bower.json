@@ -1,0 +1,62 @@
+{
+  "name": "ng-inline-edit",
+  "description": "Simple inline editing for HTML elements",
+  "version": "0.7.0",
+  "main": [
+    "dist/ng-inline-edit.js",
+    "dist/ng-inline-edit.css"
+  ],
+  "keywords": [
+    "angular",
+    "component",
+    "inline-edit",
+    "click-to-edit",
+    "edit-in-place",
+    "editable",
+    "text",
+    "title"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tameraydin/ng-inline-edit.git"
+  },
+  "homepage": "http://tamerayd.in/ng-inline-edit",
+  "authors": [
+    {
+      "name": "Tamer Aydin",
+      "homepage": "http://tamerayd.in"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": ">=1.3 <1.6"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "src",
+    "demo",
+    ".travis.yml",
+    ".editorconfig",
+    ".gitignore",
+    "gulpfile.js",
+    "package.json"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.4.7",
+    "angular-material": "~0.11.4",
+    "angular-animate": "~1.4.7",
+    "angular-material-icons": "~0.6.0"
+  },
+  "_release": "0.7.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.7.0",
+    "commit": "961ee497208939ab44d07073b740ead72751ef2c"
+  },
+  "_source": "https://github.com/tameraydin/ng-inline-edit.git",
+  "_target": "^0.7.0",
+  "_originalSource": "ng-inline-edit",
+  "_direct": true
+}
