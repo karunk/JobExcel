@@ -1,0 +1,37 @@
+{
+  "name": "ng-covervid",
+  "main": "ngCovervid.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jfeigel/ngCovervid",
+  "authors": [
+    "James Feigel <james.feigel@gmail.com>"
+  ],
+  "description": "Make your HTML5 video behave like a background cover image with this lightweight Angular directive",
+  "keywords": [
+    "video",
+    "background",
+    "covervid",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "assets",
+    "index.html",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "08b407f7c26962449e23ccadcc9e2f3bd6d24ebb"
+  },
+  "_source": "https://github.com/jfeigel/ngCovervid.git",
+  "_target": "^0.1.0",
+  "_originalSource": "ng-covervid"
+}

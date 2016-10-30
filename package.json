@@ -15,7 +15,7 @@
     "npm": ">=1.4.28"
   },
   "scripts": {
-    "postinstall": "bower install"
+    "postinstall": "bower cache clean && bower install"
   },
   "dependencies": {
     "acl": "~0.4.4",
