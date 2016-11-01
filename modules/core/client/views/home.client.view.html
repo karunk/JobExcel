@@ -48,8 +48,8 @@
                     <div class="nav-tabs-navigation">
                         <div class="nav-tabs-wrapper">
                             <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                                <li class="active"><a href="#follows" data-toggle="tab">Follows</a></li>
-                                <li><a href="#following" data-toggle="tab">Following</a></li>
+                                <li class="active"><a href="#follows" data-toggle="tab">Skills you have</a></li>
+                                <li><a href="#following" data-toggle="tab">Skills you need</a></li>
 <!--                                 <li><a href="#following" data-toggle="tab">Following</a></li> -->
                             </ul>
                         </div>
@@ -99,8 +99,10 @@
                             </div>
                         </div>
                         <div class="tab-pane text-center" id="following">
-                            <h3 class="text-muted">Not following anyone yet :(</h3>
-                            <btn class="btn btn-warning btn-fill">Find artists</btn>
+                            <h3 class="text-muted">You havent mentioned any skills yet :(</h3>
+                            <a ui-sref="skills.create"
+                                <btn class="btn btn-warning btn-fill">Add Skills</btn>
+                            </a>
                         </div>
                     </div>
                     

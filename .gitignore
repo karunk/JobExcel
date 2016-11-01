@@ -10,6 +10,10 @@ Thumbs.db
 .nodemonignore
 .sass-cache/
 node_modules/
+<<<<<<< HEAD
+=======
+public/lib/
+>>>>>>> skills
 app/tests/coverage/
 .bower-*/
 .idea/
@@ -70,4 +74,8 @@ mongod
 *.suo
 *.ntvs*
 *.njsproj
+<<<<<<< HEAD
 *.sln
+=======
+*.sln
+>>>>>>> skills

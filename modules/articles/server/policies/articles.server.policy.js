@@ -28,10 +28,22 @@ exports.invokeRolesPolicies = function () {
       permissions: ['get', 'post']
     }, {
       resources: '/api/articles/:articleId',
-      permissions: ['get']
+      permissions: ['get', 'post']
     }, {
       resources: '/api/glassdoor',
       permissions: ['get', 'post']
+    }, {
+      resources: '/api/articles/apply/:articleId',
+      permissions: ['put']
+    }, {
+      resources: '/api/skills',
+      permissions: ['get', 'post', 'put', 'delete']
+    }, {
+      resources: '/api/skills/:skillId',
+      permissions: ['put']
+    }, {
+      resources: '/api/skill/logo',
+      permissions: ['post']
     }]
   }, {
     roles: ['guest'],
@@ -40,10 +52,22 @@ exports.invokeRolesPolicies = function () {
       permissions: ['get']
     }, {
       resources: '/api/articles/:articleId',
-      permissions: ['get']
+      permissions: ['get', 'post']
     }, {
       resources: '/api/glassdoor',
       permissions: ['get', 'post']
+    }, {
+      resources: '/api/articles/apply/:articleId',
+      permissions: ['put']
+    }, {
+      resources: '/api/skills',
+      permissions: ['get', 'post', 'put', 'delete']
+    }, {
+      resources: '/api/skills/:skillId',
+      permissions: ['put']
+    }, {
+      resources: '/api/skill/logo',
+      permissions: ['post']
     }]
   }]);
 };

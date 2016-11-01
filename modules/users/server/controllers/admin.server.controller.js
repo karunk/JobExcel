@@ -15,6 +15,48 @@ exports.read = function (req, res) {
   res.json(req.model);
 };
 
+
+
+/**
+* Add skill to user
+*/
+exports.add_skill = function (req, res) {
+  // Init Variables
+  var user = req.model;
+  console.log(user);
+
+
+  //if already exists remove otherwise add
+  var found = false;
+  var index = -1;
+  for(var i = 0; i < user.skills.length; i++) {
+      if (user.skills[i] == req.body.skillId) {
+          found = true;
+          index = i;
+          break;
+      }
+  }
+
+ 
+  if (found == true){
+      user.skills.splice(index, 1);
+  }
+  else{
+    user.skills.push(req.body.skillId);
+  }
+
+  user.save(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+
+    res.json(user);
+  });
+};
+
+
 /**
  * Update a User
  */

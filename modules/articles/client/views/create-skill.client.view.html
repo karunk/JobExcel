@@ -1,0 +1,70 @@
+<div ng-controller="ArticlesController" ng-init="find_skills()">
+
+    <div class="section section-light-brown landing-section" style="padding: 10px;">
+        <div class="container">
+          <div class="row">
+              <h3 style="text-align: center;"> Create a new skill </h3>
+              <div class="col-md-8 col-md-offset-4">
+                  <form class="contact-form" name="skillForm" ng-submit="create_skill(skillForm.$valid)" novalidate>
+                    <fieldset>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group" show-errors>
+                            <label for="title">Skill Name</label>
+                            <input name="title" type="text" ng-model="skilltitle" id="title" class="form-control" placeholder="Skill Title/Name" required>
+                            <div ng-messages="skillForm.title.$error" role="alert">
+                              <p class="help-block error-text" ng-message="required">Skill title/name is required.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-1">
+                                <button type="submit" class="btn btn-danger btn-block btn-lg btn-fill">Add</button>
+                            </div>
+                        </div>
+                      </div>
+                      <div ng-show="error" class="text-danger">
+                        <strong ng-bind="error"></strong>
+                      </div>
+                    </fieldset>
+                  </form>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="section section-dark text-center landing-section" style="padding: 10px; min-height: 25em;">
+        <div class="container">
+            <h2>Or select skills which you know</h2>
+            <div class="col-md-4 skillselect" ng-repeat="skill in skills" ng-click="add_skill(skill._id)" ng-class="{test: skill_present(skill._id, authentication.user.skills) == true}">
+                <div class="team-player">
+                    <img ng-src="{{authentication.user.profileImageURL}}" alt="Thumbnail Image" class="img-circle img-responsive">
+                    <h5>{{skill.title}} <br /><small class="text-muted">{{skill.jobs.length}} companies require this skill.</small></h5>
+                </div>
+                <p ng-if="skill_present(skill._id, authentication.user.skills) == false" class="skilltext"> Click to add. </p>
+                <p ng-if="skill_present(skill._id, authentication.user.skills) == true" class="skilltext"> You have this skill. </p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-demo section-dark">
+        <div class="container">
+            <nav class="pull-left">
+                <ul>
+    
+                    <li>
+                        <a href="#">
+                            JobExcel
+                        </a>
+                    </li>
+                    <li>
+                        <a href='https://www.glassdoor.co.in/index.htm'>powered by <img src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search' /></a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright pull-right">
+                &copy; 2016, made with <i class="fa fa-heart heart"></i> by <a href="https://github.com/karunk">karunk</a>
+            </div>
+        </div>
+    </footer>  
+</div>

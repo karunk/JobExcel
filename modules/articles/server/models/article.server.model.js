@@ -36,7 +36,11 @@ var ArticleSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User'
-  }
+  },
+  skills: [{
+    type: Schema.ObjectId,
+    ref: 'Skill'
+  }]
 });
 
 mongoose.model('Article', ArticleSchema);
