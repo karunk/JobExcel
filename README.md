@@ -1,10 +1,10 @@
-[![MEAN.JS Logo](http://i.imgur.com/gPtaMkl.jpg)](http://meanjs.org/)
+[![JobExcel Logo](http://i.imgur.com/gPtaMkl.jpg)](jobexcel.herokuapp.com)
 
-[![Build Status]]
-[![Dependencies Status](https://david-dm.org/meanjs/mean.svg)](https://david-dm.org/meanjs/mean)
-[![Coverage Status](https://coveralls.io/repos/meanjs/mean/badge.svg?branch=master&service=github)](https://coveralls.io/github/meanjs/mean?branch=master)
 
-MEAN.JS is a full-stack JavaScript open-source solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+JobExcel is a fancy personal spreadsheet to organize and mark the jobs which you are planning to apply in the near future. You can keep track of the job description, read what the employees have to say about the job and see the glassdoor ratings all from the comfort of your personal spreadsheet.
+
+
+JobExcel was built using [MEAN.JS](http://meanjs.org/), which is a full-stack JavaScript open-source solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. 
 
 ## Before You Begin
 Before you begin we recommend you read about the basic building blocks that assemble a MEAN.JS application:
