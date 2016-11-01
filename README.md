@@ -1,4 +1,4 @@
-[![JobExcel Logo](http://i.imgur.com/gPtaMkl.jpg)](jobexcel.herokuapp.com)
+[![JobExcel Logo](http://i.imgur.com/gPtaMkl.jpg)](http://jobexcel.herokuapp.com)
 
 
 JobExcel is a fancy personal spreadsheet to organize and mark the jobs which you are planning to apply in the near future. You can keep track of the job description, read what the employees have to say about the job and see the glassdoor ratings all from the comfort of your personal spreadsheet.
