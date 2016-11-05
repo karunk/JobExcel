@@ -5,7 +5,7 @@
       </div>
   </div>
   <div class="section section-dark-blue">
-      <div class="container" ng-show="article_ready == false">
+      <div class="container" ng-if="article_ready == false">
         <three-bounce-spinner></three-bounce-spinner>
       </div>
       <div class="container" ng-show="article_ready == true">
@@ -53,7 +53,7 @@
       </div>
   </div>
   <div class="section section-light-brown landing-section">
-      <div class="container" ng-show="article_ready == false">
+      <div class="container" ng-if="article_ready == false">
         <three-bounce-spinner></three-bounce-spinner>
       </div>
       <div class="container" ng-show="article_ready == true">
@@ -86,7 +86,7 @@
       </div>
   </div>
   <div class="section section-nude section-with-space">
-      <div class="container" ng-show="article_ready == false">
+      <div class="container" ng-if="article_ready == false">
         <three-bounce-spinner></three-bounce-spinner>
       </div>
       <div class="container tim-container" ng-show="article_ready == true">
