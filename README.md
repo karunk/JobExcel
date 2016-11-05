@@ -7,6 +7,8 @@ JobExcel is a fancy personal spreadsheet to organize and mark the jobs which you
 JobExcel was built using [MEAN.JS](http://meanjs.org/), which is a full-stack JavaScript open-source solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. 
 
 
+##ISSUES 
+Bower files are not installing automatically when pushed and built on heroku, I am manually adding bower files for now as a hack for this problem.
 
 ## Development
 Make sure you have installed all of the following prerequisites on your development machine:
