@@ -1,4 +1,4 @@
-<div ng-controller="HomeController">
+<div ng-controller="HomeController" ng-init="find_skills()">
 	<div class="container" id="home-page-container" ng-if="!authentication.user">
 	  <div class="jumbotron">
 	    <h1>JobExcel</h1> 
@@ -30,7 +30,7 @@
                         <div>
                             <h4 style="margin: 0px;">{{authentication.user.displayName}}<br /></h4>
                             <div style="text-align: center;">
-                            	<h4 style="margin-top: 0px;"><small>{{authentication.user.designation}}</small></h4>
+                            	<h4 style="margin-top: 0px;"><small>{{skills}}</small></h4>
                             </div>
                         </div>
                     </div>

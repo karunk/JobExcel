@@ -1,4 +1,9 @@
 <div class="section section-light-brown landing-section" ng-controller="ArticlesController" ng-init="find_and_pagination()" style="min-height: 100vh; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-top: 20px;">
+  <div ng-show="find_and_pagination_start == false">
+    <three-bounce-spinner></three-bounce-spinner>
+  </div>
+  <div ng-show="find_and_pagination_start == true">
+
     <div class="row">
       <div class="col-md-9" style="display: flex; flex-direction: row; justify-content: flex-start;">
             <h3 style="margin-top: 0px; padding-left: 10%;">You have {{articles.length}} jobs listed.</h3>
@@ -33,7 +38,7 @@
     <div class="row" style="display: flex; justify-content: center;">
       <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
     </div>
-
+  </div>
     <footer class="footer-demo">
         <div class="container">
             <div class="copyright pull-right">

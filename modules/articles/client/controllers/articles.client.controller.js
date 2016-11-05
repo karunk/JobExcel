@@ -23,6 +23,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
       $scope.itemsPerPage = 6;
       $scope.currentPage = 1;
       $scope.figureOutItemsToDisplay();
+      return;
     };
     $scope.figureOutItemsToDisplay = function () {
       $scope.filteredItems = $filter('filter')($scope.articles, {
@@ -33,6 +34,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
       var end = begin + $scope.itemsPerPage;
       $scope.pagedItems = $scope.filteredItems.slice(begin, end);
       console.log($scope.pagedItems);
+      return;
     };
     $scope.pageChanged = function () {
       $scope.figureOutItemsToDisplay();
@@ -299,14 +301,17 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 
     // Find a list of Articles and build pagination
     $scope.find_and_pagination = function () {
+      $scope.find_and_pagination_start = false;
       $scope.articles = Articles.query();
       $scope.articles.$promise.then(function (result) {
           $scope.buildPager();
+          $scope.find_and_pagination_start = true;
       });
     };  
 
     // Find existing Article
     $scope.findOne = function () {
+      $scope.article_ready = false;
       $scope.article = Articles.get({
         articleId: $stateParams.articleId
       });
@@ -321,6 +326,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
           console.log(data);
           $scope.glassdoor = data;
           $scope.GlassdoorClean(data);
+          $scope.article_ready = true;
         });
         $scope.skills = [];
         var url = '/api/skills/';

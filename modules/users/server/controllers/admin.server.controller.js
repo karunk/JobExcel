@@ -57,6 +57,9 @@ exports.add_skill = function (req, res) {
 };
 
 
+
+
+
 /**
  * Update a User
  */
@@ -122,7 +125,7 @@ exports.userByID = function (req, res, next, id) {
     });
   }
 
-  User.findById(id, '-salt -password').exec(function (err, user) {
+  User.findById(id, '-salt -password').populate('skills', 'title').exec(function (err, user) {
     if (err) {
       return next(err);
     } else if (!user) {

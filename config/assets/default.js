@@ -8,8 +8,7 @@ module.exports = {
         'public/paperkit/assets/css/ct-paper.css',
         'public/paperkit/assets/css/demo.css',
         'public/paperkit/assets/css/examples.css',
-        'public/lib/ng-inline-edit/dist/ng-inline-edit.min.css'
-
+        'public/lib/angular-spinkit/build/angular-spinkit.min.css'
       ],
       js: [
         'public/lib/angular/angular.js',
@@ -25,7 +24,7 @@ module.exports = {
         'public/paperkit/assets/js/jquery-ui-1.10.4.custom.min.js',
         'public/paperkit/bootstrap3/js/bootstrap.js',
         'public/paperkit/assets/js/ct-paper-checkbox.js',
-        'public/lib/ng-inline-edit/dist/ng-inline-edit.min.js'
+        'public/lib/angular-spinkit/build/angular-spinkit.min.js'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },
