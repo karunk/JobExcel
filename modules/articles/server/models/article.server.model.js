@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Article Schema
+ * Article Schema - article used inplace of job-listing
  */
 var ArticleSchema = new Schema({
   created: {
@@ -40,7 +40,15 @@ var ArticleSchema = new Schema({
   skills: [{
     type: Schema.ObjectId,
     ref: 'Skill'
-  }]
+  }],
+  reff: {
+    type: String,
+    default: 'Add information about your refferal sources at this company, if you have any.'
+  },
+  applied: {
+    type: Boolean,
+    default: false
+  }
 });
 
 mongoose.model('Article', ArticleSchema);

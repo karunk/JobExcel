@@ -22,6 +22,7 @@ module.exports = function (app) {
     .post(adminPolicy.isAllowed, admin.add_skill);
 
 
+
   // Finish by binding the user middleware
   app.param('userId', admin.userByID);
 };

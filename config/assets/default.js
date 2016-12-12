@@ -8,7 +8,8 @@ module.exports = {
         'public/paperkit/assets/css/ct-paper.css',
         'public/paperkit/assets/css/demo.css',
         'public/paperkit/assets/css/examples.css',
-        'public/lib/angular-spinkit/build/angular-spinkit.min.css'
+        'public/lib/angular-spinkit/build/angular-spinkit.min.css',
+        'public/lib/jqcloud2/dist/jqcloud.min.css'
       ],
       js: [
         'public/lib/angular/angular.js',
@@ -24,7 +25,11 @@ module.exports = {
         'public/paperkit/assets/js/jquery-ui-1.10.4.custom.min.js',
         'public/paperkit/bootstrap3/js/bootstrap.js',
         'public/paperkit/assets/js/ct-paper-checkbox.js',
-        'public/lib/angular-spinkit/build/angular-spinkit.min.js'
+        'public/lib/angular-spinkit/build/angular-spinkit.min.js',
+        'public/lib/chart.js/dist/Chart.min.js',
+        'public/lib/angular-chart.js/dist/angular-chart.min.js',
+        'public/lib/jqcloud2/dist/jqcloud.min.js',
+        'public/lib/angular-jqcloud/angular-jqcloud.js'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

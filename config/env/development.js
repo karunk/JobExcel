@@ -4,10 +4,10 @@ var defaultEnvConfig = require('./default');
 
 module.exports = {
   db: {
-    uri: "mongodb://karun_jobexcel:mLabkarun_1994@ds023624.mlab.com:23624/jobexcel",
+    uri: "mongodb://localhost/jobexcel1",
     options: {
-      user: 'karun_jobexcel',
-      pass: 'mLabkarun_1994'
+      user: '',
+      pass: ''
     },
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false

@@ -1,4 +1,4 @@
-<div ng-controller="HomeController" ng-init="find_skills()">
+<div ng-controller="HomeController" ng-init="gather_info()">
 	<div class="container" id="home-page-container" ng-if="!authentication.user">
 	  <div class="jumbotron">
 	    <h1>JobExcel</h1> 
@@ -29,18 +29,15 @@
                         </div>
                         <div>
                             <h4 style="margin: 0px;">{{authentication.user.displayName}}<br /></h4>
-                            <div style="text-align: center;">
-                            	<h4 style="margin-top: 0px;"><small>{{skills}}</small></h4>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 text-center">
-                        <p>{{myModel}}</p>
+                        <p>{{applied}}</p>
                         <br />
-                        <a ui-sref="articles.create">
-                        	<btn class="btn"><i class="fa fa-briefcase"></i> Add Jobs</btn>
+                        <a ui-sref="skills.create">
+                        	<btn class="btn"><i class="fa fa-wrench"></i> Add Skill</btn>
                         </a>
                     </div>
                 </div>
@@ -48,9 +45,9 @@
                     <div class="nav-tabs-navigation">
                         <div class="nav-tabs-wrapper">
                             <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                                <li class="active"><a href="#follows" data-toggle="tab">Skills you have</a></li>
+                                <li class="active"><a href="#follows" data-toggle="tab">Jobs you need to apply soon</a></li>
                                 <li><a href="#following" data-toggle="tab">Skills you need</a></li>
-<!--                                 <li><a href="#following" data-toggle="tab">Following</a></li> -->
+                                <li><a href="#analytics" data-toggle="tab">Analytics</a></li> 
                             </ul>
                         </div>
                     </div>
@@ -59,13 +56,13 @@
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3">
                                     <ul class="list-unstyled follows">
-                                        <li>
+                                        <li ng-repeat="job in approaching_deadline">
                                             <div class="row">
                                                 <div class="col-md-2 col-md-offset-0 col-xs-3 col-xs-offset-2">
-                                                    <img src="../assets/paper_img/flume.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                    <img src="https://logo.clearbit.com/{{job.company | lowercase}}.com" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                                 </div>
                                                 <div class="col-md-7 col-xs-4">
-                                                    <h6>Flume<br /><small>Musical Producer</small></h6>
+                                                    <h6>{{job.jobtitle}}<br /><small>Deadline in {{job.Datemsdiff}}</small></h6>
                                                 </div>
                                                 <div class="col-md-3 col-xs-2">
                                                     <div class="unfollow" rel="tooltip" title="Unfollow">
@@ -75,34 +72,24 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </li>
-                                        <hr />
-                                        <li>
-                                            <div class="row">
-                                                <div class="col-md-2 col-md-offset-0 col-xs-3 col-xs-offset-2">
-                                                    <img src="../assets/paper_img/banks.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                </div>
-                                                <div class="col-md-7 col-xs-4">
-                                                    <h6>Banks<br /><small>Singer</small></h6>
-                                                </div>
-                                                <div class="col-md-3 col-xs-2">
-                                                    <div class="unfollow" rel="tooltip" title="Unfollow">
-                                                        <label class="checkbox" for="checkbox1" >
-                                                            <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox" checked>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <hr />
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane text-center" id="following">
-                            <h3 class="text-muted">You havent mentioned any skills yet :(</h3>
-                            <a ui-sref="skills.create"
-                                <btn class="btn btn-warning btn-fill">Add Skills</btn>
-                            </a>
+                            <h3 class="text-muted">This section is coming soon...</h3>
+                        </div>
+                     <div class="tab-pane text-center" id="analytics">
+                            <h3 class="text-muted">This section is coming soon...</h3>
+                            <!--
+                            <div>
+                                <canvas id="doughnut" class="chart chart-doughnut"
+                                  chart-data="data" chart-labels="labels" style="height: 100px; width: 100px; ">
+                                </canvas> 
+                            </div>
+                            -->
                         </div>
                     </div>
                     
@@ -110,7 +97,6 @@
             </div>
         </div>
 	    
-
 
 
 

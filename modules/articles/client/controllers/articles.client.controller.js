@@ -302,20 +302,24 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
     // Find a list of Articles and build pagination
     $scope.find_and_pagination = function () {
       $scope.find_and_pagination_start = false;
-      $scope.articles = Articles.query();
-      $scope.articles.$promise.then(function (result) {
-          $scope.buildPager();
-          $scope.find_and_pagination_start = true;
-      });
+      $http.get('/api/article/' + $scope.authentication.user._id)
+          .success(function(result) {
+            console.log(result);
+            $scope.articles = result;
+            $scope.buildPager();
+            $scope.find_and_pagination_start = true;
+          });
     };  
 
     // Find existing Article
     $scope.findOne = function () {
+      console.log('here');
       $scope.article_ready = false;
       $scope.article = Articles.get({
         articleId: $stateParams.articleId
       });
       $scope.article.$promise.then(function (result) {
+        console.log(result,'^^');
         var tmpDate = new Date(result.deadline);
         var now = new Date();
         $scope.Datemsdiff = $scope.MstoTime(tmpDate - now);

@@ -249,7 +249,8 @@ exports.update = function (req, res) {
   article.company = req.body.company;
   article.deadline = req.body.deadline;
   article.notes = req.body.notes;
-  
+  article.reff = req.body.reff;
+
   article.save(function (err) {
     if (err) {
       return res.status(400).send({
@@ -298,10 +299,11 @@ exports.delete = function (req, res) {
 };
 
 /**
- * List of Articles
+ * List of Articles by user
  */
 exports.list = function (req, res) {
-  Article.find().sort('-created').populate('skills', 'title').populate('user', 'displayName').exec(function (err, articles) {
+  console.log(req.model);
+  Article.find({'user': req.model._id}).sort('-created').populate('skills', 'title').populate('user', 'displayName').exec(function (err, articles) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

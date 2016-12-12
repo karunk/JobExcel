@@ -44,7 +44,10 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/skill/logo',
       permissions: ['post']
-    }]
+    }, {
+    resources: '/api/article/:userId',
+    permissions: ['get']
+  }]
   }, {
     roles: ['guest'],
     allows: [{
@@ -68,7 +71,10 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/skill/logo',
       permissions: ['post']
-    }]
+    }, {
+    resources: '/api/article/:userId',
+    permissions: ['get']
+  }]
   }]);
 };
 

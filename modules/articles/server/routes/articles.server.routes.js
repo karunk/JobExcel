@@ -26,8 +26,11 @@ module.exports = function (app) {
 
   // Articles collection routes
   app.route('/api/articles').all(articlesPolicy.isAllowed)
-    .get(articles.list)
     .post(articles.create);
+
+  //Get articles by specific user
+  app.route('/api/article/:userId')
+    .get(articles.list);
 
   // Single article routes
   app.route('/api/articles/:articleId').all(articlesPolicy.isAllowed)

@@ -17,6 +17,9 @@ exports.read = function (req, res) {
 
 
 
+
+
+
 /**
 * Add skill to user
 */
